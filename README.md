@@ -1,4 +1,4 @@
-## Front End Libraries Projects - Build a Random Quote Macine
+## Front End Libraries Projects - Build a Random Quote Machine
 
 **Objective:** Build a CodePen.io app that is functionally smilar to this: https://codepen.io/freeCodeCamp/full/qRZeGZ.
 
@@ -27,6 +27,7 @@
 #### About:
 
 This project is an exercise project for the Freecodecamp - Frontend Libraries course.
+The site is live <a href="https://5e7fbfa1f0aa9eec43384b6c--bkrmadtya-fcc-random-quote.netlify.com" target="blank">here</a>
 
 **To run this project:**
 
