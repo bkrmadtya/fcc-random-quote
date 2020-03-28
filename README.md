@@ -37,3 +37,15 @@ The site is live <a href="https://5e7fbfa1f0aa9eec43384b6c--bkrmadtya-fcc-random
 - go to `localhost:3000`
 
 #### Result:
+<p align="center">
+<kbd>
+<a href="url"><img src="https://github.com/bkrmadtya/fcc-random-quote/blob/master/public/Quote%201.png" height="auto" width="500" style="border-radius:50%"></a>
+</kbd>
+ </p>
+ 
+ 
+<p align="center">
+<kbd>
+<a href="url"><img src="https://github.com/bkrmadtya/fcc-random-quote/blob/master/public/Quote%202.png" height="auto" width="500" style="border-radius:50%"></a>
+</kbd>
+ </p>
