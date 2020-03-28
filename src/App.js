@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useFccTest, FccTests } from '@asteffey/react-fcc-test';
+
 import QuoteBox from './QuoteBox';
 
 const colors = [
@@ -19,7 +20,7 @@ const colors = [
 
 export default function App() {
   const [quotes, setQuotes] = useState([]);
-  const [selectedQuote, setSelectedQuote] = useState();
+  const [newQuote, setNewQuote] = useState();
   const [accentColor, setAccentColor] = useState();
 
   useEffect(() => {
@@ -31,11 +32,9 @@ export default function App() {
       .then(({ quotes }) => {
         setQuotes(quotes);
 
-        setSelectedQuote(quotes[generateRandNumUpTo(quotes.length)]);
+        setNewQuote(quotes[generateRandNumUpTo(quotes.length)]);
         setAccentColor(colors[generateRandNumUpTo(colors.length)]);
       });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useFccTest({
@@ -47,13 +46,13 @@ export default function App() {
   };
 
   const handleChangeQuote = () => {
-    setSelectedQuote(quotes[generateRandNumUpTo(quotes.length)]);
+    setNewQuote(quotes[generateRandNumUpTo(quotes.length)]);
     setAccentColor(colors[generateRandNumUpTo(colors.length)]);
   };
 
   return (
     <QuoteBox
-      selectedQuote={selectedQuote}
+      newQuote={newQuote}
       accentColor={accentColor}
       handleChangeQuote={handleChangeQuote}
     />

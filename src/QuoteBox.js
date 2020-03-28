@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Card,
@@ -6,7 +6,8 @@ import {
   Typography,
   Button,
   CardActions,
-  makeStyles
+  makeStyles,
+  Fade
 } from '@material-ui/core';
 import { FormatQuoteRounded, Twitter } from '@material-ui/icons';
 
@@ -53,13 +54,21 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function QuoteBox(props) {
-  const { selectedQuote, accentColor, handleChangeQuote } = props;
-
+  const [quote, setQuote] = useState();
+  const { newQuote, accentColor, handleChangeQuote } = props;
   const classes = useStyles();
 
-  const generateRandNumUpTo = num => {
-    return Math.floor(Math.random() * num);
+  const setNewQuote = newQuote => {
+    setTimeout(() => {
+      setQuote(newQuote);
+    }, 300);
   };
+
+  useEffect(() => {
+    setNewQuote(newQuote);
+
+    return setNewQuote;
+  }, [newQuote]);
 
   return (
     <Container
@@ -67,25 +76,27 @@ export default function QuoteBox(props) {
       style={{ background: accentColor }}
     >
       <Card variant="outlined" className={classes.quoteBox} id="quote-box">
-        <CardContent>
-          <Typography
-            id="text"
-            className={classes.quote}
-            style={{ color: accentColor }}
-          >
-            <FormatQuoteRounded className={classes.quoteIcon} />
-            {selectedQuote?.quote}
-          </Typography>
+        <Fade in={quote?.quote === newQuote?.quote} timeout={400}>
+          <CardContent>
+            <Typography
+              id="text"
+              className={classes.quote}
+              style={{ color: accentColor }}
+            >
+              {quote && <FormatQuoteRounded className={classes.quoteIcon} />}
+              {quote?.quote}
+            </Typography>
 
-          <Typography
-            color="secondary"
-            id="author"
-            className={classes.author}
-            style={{ color: accentColor }}
-          >
-            - {selectedQuote?.author}
-          </Typography>
-        </CardContent>
+            <Typography
+              color="secondary"
+              id="author"
+              className={classes.author}
+              style={{ color: accentColor }}
+            >
+              - {quote?.author}
+            </Typography>
+          </CardContent>
+        </Fade>
 
         <CardActions disableSpacing>
           <a href="twitter.com/intent/tweet" id="tweet-quote">
