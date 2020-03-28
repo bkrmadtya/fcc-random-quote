@@ -7,11 +7,9 @@ import {
   Typography,
   Button,
   CardActions,
-  IconButton,
   makeStyles
 } from '@material-ui/core';
 import { FormatQuoteRounded, Twitter } from '@material-ui/icons';
-import './App.css';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -25,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   quoteBox: {
     width: '450px',
     margin: '0 auto',
-    padding: '30px 50px 40px 50px'
+    padding: '15px 50px 40px 50px'
   },
   quote: {
     fontSize: '1.5em',
