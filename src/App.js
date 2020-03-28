@@ -1,7 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useFccTest, FccTests } from '@asteffey/react-fcc-test';
+import { Container, makeStyles, Typography, Link } from '@material-ui/core';
 
-import QuoteBox from './QuoteBox';
+import QuoteBox from './component/QuoteBox';
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    height: '100%',
+    width: '100%',
+    position: 'fixed',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  signature: {
+    color: 'white',
+    fontSize: '0.8em',
+    margin: 15
+  },
+  credit: {
+    color: 'white'
+  }
+}));
 
 const colors = [
   '#16a085',
@@ -22,6 +43,8 @@ export default function App() {
   const [quotes, setQuotes] = useState([]);
   const [newQuote, setNewQuote] = useState();
   const [accentColor, setAccentColor] = useState();
+
+  const classes = useStyles();
 
   useEffect(() => {
     const url =
@@ -51,10 +74,38 @@ export default function App() {
   };
 
   return (
-    <QuoteBox
-      newQuote={newQuote}
-      accentColor={accentColor}
-      handleChangeQuote={handleChangeQuote}
-    />
+    <Container
+      className={classes.container}
+      style={{ background: accentColor }}
+    >
+      <QuoteBox
+        newQuote={newQuote}
+        accentColor={accentColor}
+        handleChangeQuote={handleChangeQuote}
+      />
+      <Typography className={classes.signature}>
+        by{' '}
+        <Link
+          variant="subtitle2"
+          href="https://linkedin.com/in/bkrmadtya"
+          target="blank"
+          color="inherit"
+        >
+          Bikram Karki
+        </Link>{' '}
+        2020
+      </Typography>
+
+      <Typography variant="body2" className={classes.credit}>
+        Inspired by:{' '}
+        <Link
+          href="https://codepen.io/freeCodeCamp/pen/qRZeGZ"
+          target="blank"
+          color="inherit"
+        >
+          https://codepen.io/freeCodeCamp/pen/qRZeGZ
+        </Link>
+      </Typography>
+    </Container>
   );
 }
